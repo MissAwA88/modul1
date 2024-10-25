@@ -112,3 +112,104 @@ function evaluatePlayerChoice(rawChocie) {
 
 
 process.exit();
+
+const GAME_DICTIONARY = {
+
+    no: { 
+    player1: "du",
+    player2: "AI overloard",
+    draw: "Det ble uavgjort",
+    winner: "Vinneren er : ",
+    selectionQuestion: "Gjør valget ditt (S)tein, S(a)ks,(P)apir",
+    youPicked: "Du valgte",
+    aiPicked: "AI valgte",
+    rock: "S",
+    paper: "P",
+    scissors: "A",
+    choices: ["Stein", "Papir", "Saks"],
+    title: "La oss spille stein saks papir",
+    playAgain: "La oss spille igjen!Y/N"
+},
+
+en: {
+    player1:"you",
+    player2:"AI overleard",
+    draw: "Its a draw!",
+    winner: "The winner is",
+    selectionQuestion: "Make your Choice (R)ock, (S)cissor,(P)aper",
+    youPicked: "You selected",
+    aiPicked: "AI selected",
+    rock: "R",
+    paper: "P",
+    scissor: "S",
+    choices: ["Rock", "Paper","Scissor"],
+    title: "Lets play rock, paper & scissor",
+    playAgain: "Lets play again!Y/N"
+
+
+
+}
+
+}
+export default GAME_DICTIONARY;
+
+function getRandomItemFromArray(array) {
+    let max = array.length - 1;
+    let rndIndex = Math.round(Math.random() * max);
+    return array[rndIndex];
+}
+
+
+export { getRandomItemFromArray }
+
+import { ANSI } from './ansi.mjs';
+
+function print(text, color = ANSI.COLOR.WHITE) {
+    console.log(color, text, ANSI.RESET)
+}
+
+export { print }
+
+const ESC = '\x1b';
+const CSI = ESC + '[';
+const CURSOR_UP = CSI + 'A';
+const CURSOR_DOWN = CSI + 'B';
+const CURSOR_RIGHT = CSI + 'C';
+const CURSOR_LEFT = CSI + 'D';
+const CLEAR_SCREEN = CSI + '2J';
+const CURSOR_HOME = CSI + '1;1H';
+const SAVE_CURSOR = ESC + '7';
+const RESTORE_CURSOR = ESC + '8';
+const moveCursorTo = (row, col) => CSI + row + ';' + col + 'H';
+const BELL = '\x07';
+const RESET = '\x1b[0m';
+const GREEN = '\x1b[32m';
+const RED = '\x1b[31m';
+const YELLOW = '\x1b[33m';
+const BLUE = '\x1b[34m';
+const WHITE = '\x1b[37m';
+
+const ANSI = {
+    ESC,
+    CSI,
+    CURSOR_UP,
+    CURSOR_DOWN,
+    CURSOR_RIGHT,
+    CURSOR_LEFT,
+    CLEAR_SCREEN,
+    CURSOR_HOME,
+    SAVE_CURSOR,
+    RESTORE_CURSOR,
+    BELL,
+    RESET,
+    moveCursorTo,
+    COLOR: {
+        GREEN,
+        RED,
+        YELLOW,
+        BLUE,
+        WHITE
+    }
+}
+
+export { ANSI }
